@@ -89,8 +89,11 @@ setup(
     include_package_data=True,
     data_files = data_files,
     install_requires=[
-                     'janitoo_db == %s'%janitoo_version,
+                     'janitoo_db == %s'%"0.0.7",
                     ],
+    dependency_links = [
+      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo_db-%s'%"0.0.7",
+    ],
     entry_points = {
         "janitoo.models": [
             "janitoo_layouts = janitoo_layouts.models:extend",
@@ -99,8 +102,8 @@ setup(
         #~ "datarrd.datasource = janitoo_datalog_rrd.components:make_datasource",
         #~ "http.rrd = janitoo_datalog_rrd.components:make_http_resource",
     #~ ],
-    "janitoo.threads": [
-        "layouts = janitoo_layouts.thread:make_thread",
-    ],
+        "janitoo.threads": [
+            "layouts = janitoo_layouts.thread:make_thread",
+        ],
     }
 )
