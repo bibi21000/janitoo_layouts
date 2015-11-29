@@ -33,34 +33,20 @@ from pkg_resources import iter_entry_points
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 from janitoo_nosetests import JNTTBase
+from janitoo_nosetests.models import JNTTModels
 
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
 
-##############################################################
-#Check that we are in sync with the official command classes
-#Must be implemented for non-regression
-from janitoo.classes import COMMAND_DESC
+import janitoo_db.models as jntmodels
 
-COMMAND_DISCOVERY = 0x5000
-
-assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
-##############################################################
-
-class TestExtensionModels(JNTTBase):
-    """Test the DatalogServer server
+class TestModels(JNTTModels):
+    """Test the models
     """
-    def setUp(self):
-        JNTTBase.setUp(self)
-        from janitoo_layouts.models import extend
+    models_conf = "tests/data/janitoo_layouts.conf"
 
-    def test_001_engine(self):
-        options = JNTOptions({'conf_file':'tests/data/janitoo_layouts.conf'})
-        options.load()
-        engine = create_db_engine(options)
-        self.dbmaker = sessionmaker()
-        # Bind the sessionmaker to engine
-        self.dbmaker.configure(bind=engine)
-        self.dbsession = scoped_session(self.dbmaker)
-        Base.metadata.create_all(bind=engine)
-
+    def test_001_layouts(self):
+        category = jntmodels.LayoutsCategories(key="key_cat", name="test_cat", description="test_description")
+        layout = jntmodels.Layouts(key="key_layout", name="test_layout", description="test_description", layoutcategory=category)
+        self.dbsession.merge(category, layout)
+        self.dbsession.commit()
