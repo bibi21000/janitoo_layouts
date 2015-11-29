@@ -31,11 +31,13 @@ import logging
 from pkg_resources import iter_entry_points
 
 from sqlalchemy.orm import sessionmaker, scoped_session
+from alembic import command as alcommand
 
-from janitoo_nosetests import JNTTBase
+from janitoo_nosetests.models import JNTTModels
 
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
+from janitoo_db.migrate import Config as alConfig, collect_configs, janitoo_config
 
 
 ##############################################################
@@ -48,14 +50,10 @@ COMMAND_DISCOVERY = 0x5000
 assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
 ##############################################################
 
-class TestFullModels(JNTTBase):
-    """Test the DatalogServer server
+class TestFullModels(JNTTModels):
+    """Test the server
     """
-    def setUp(self):
-        JNTTBase.setUp(self)
-        import janitoo_db.models
-
-    def test_001_engine(self):
+    def test_101_engine(self):
         options = JNTOptions({'conf_file':'tests/data/janitoo_layouts.conf'})
         options.load()
         engine = create_db_engine(options)

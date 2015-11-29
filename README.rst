@@ -1,3 +1,7 @@
+.. image:: https://travis-ci.org/bibi21000/janitoo_layouts.svg?branch=master
+    :target: https://travis-ci.org/bibi21000/janitoo_layouts
+    :alt: Travis test status
+
 ===============
 The README file
 ===============
