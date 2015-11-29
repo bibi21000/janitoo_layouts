@@ -33,12 +33,12 @@ from pkg_resources import iter_entry_points
 from sqlalchemy.orm import sessionmaker, scoped_session
 from alembic import command as alcommand
 
-from janitoo_nosetests.models import JNTTModels, JNTTModelsCommon
+from janitoo_nosetests.models import JNTTFullModels, JNTTFullModelsCommon
+from janitoo_nosetests.models import JNTTModels
 
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
 from janitoo_db.migrate import Config as alConfig, collect_configs, janitoo_config
-
 
 ##############################################################
 #Check that we are in sync with the official command classes
@@ -50,7 +50,7 @@ COMMAND_DISCOVERY = 0x5000
 assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
 ##############################################################
 
-class TestFullModels(JNTTModels, JNTTModelsCommon):
+class TestFullModels(JNTTFullModels, JNTTFullModelsCommon):
     """Test the full model
     """
     pass
