@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Unittests for DHCP Server.
+"""Unittests for Datalog Server.
 """
 __license__ = """
     This file is part of Janitoo.
@@ -28,7 +28,6 @@ import time, datetime
 import unittest
 import threading
 import logging
-import time
 from pkg_resources import iter_entry_points
 
 from janitoo_nosetests.server import JNTTServer, JNTTServerCommon
@@ -41,7 +40,7 @@ from janitoo.utils import TOPIC_NODES, TOPIC_NODES_REPLY, TOPIC_NODES_REQUEST
 from janitoo.utils import TOPIC_BROADCAST_REPLY, TOPIC_BROADCAST_REQUEST
 from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_SYSTEM, TOPIC_VALUES_BASIC
 
-from janitoo_layouts.server import LayoutsServer
+from janitoo_datalog_rrd.server import DatalogServer
 
 ##############################################################
 #Check that we are in sync with the official command classes
@@ -53,273 +52,22 @@ COMMAND_DISCOVERY = 0x5000
 assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
 ##############################################################
 
-class TestLayoutsSerser(JNTTServer, JNTTServerCommon):
+class TestDatalogSerser(JNTTServer, JNTTServerCommon):
     """Test the DatalogServer server
     """
     loglevel = logging.DEBUG
     path = '/tmp/janitoo_test'
     broker_user = 'toto'
     broker_password = 'toto'
-    server_class = LayoutsServer
-    server_conf = "/opt/janitoo/src/janitoo_layouts/tests/data/janitoo_layouts.conf"
+    server_class = DatalogServer
+    server_conf = "tests/data/janitoo_datalog.conf"
 
-    def test_100_layouts_cache_heartbeat_online(self):
+    def test_101_wait_for_all_nodes(self):
+        self.onlyTravisTest()
         self.start()
-        self.assertHeartbeatNode()
-        pastdatetime = datetime.datetime.now() - datetime.timedelta(seconds=self.server.lease_mgr.heartbeat_timeout+1)
-        self.server.lease_mgr._cachemgr.update(1, 1, state='ONLINE', last_seen=pastdatetime)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'ONLINE')
-        for i in range(0, self.server.lease_mgr.heartbeat_count-1):
-            self.server.lease_mgr.check_heartbeat()
-            print(self.server.lease_mgr._cachemgr.entries[1][1], i+1)
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'ONLINE')
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['count'], i+1)
-        self.server.lease_mgr.check_heartbeat()
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['count'], 0)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'PENDING')
-        for i in range(0, self.server.lease_mgr.heartbeat_count-1):
-            self.server.lease_mgr.check_heartbeat()
-            print(self.server.lease_mgr._cachemgr.entries[1][1], i+1)
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'PENDING')
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['count'], i+1)
-        self.server.lease_mgr.check_heartbeat()
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['count'], 0)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'FAILED')
-        for i in range(0, self.server.lease_mgr.heartbeat_count):
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'FAILED')
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['count'], i)
-            self.server.lease_mgr.check_heartbeat()
+        self.assertHeartbeatNode(hadd=HADD%(1014,0))
+        self.assertHeartbeatNode(hadd=HADD%(1014,1))
+        self.assertHeartbeatNode(hadd=HADD%(1018,0))
+        self.assertHeartbeatNode(hadd=HADD%(1018,1))
         self.stop()
 
-    def test_101_layouts_cache_multi(self):
-        self.start()
-        self.assertHeartbeatNode()
-        pastdatetime = datetime.datetime.now() - datetime.timedelta(seconds=self.server.lease_mgr.heartbeat_timeout+1)
-        self.server.lease_mgr._cachemgr.update(1, 0, state='OFFLINE', last_seen=pastdatetime)
-        self.server.lease_mgr._cachemgr.update(1, 1, state='OFFLINE', last_seen=pastdatetime)
-        self.server.lease_mgr._cachemgr.update(1, 2, state='OFFLINE', last_seen=pastdatetime)
-        self.server.lease_mgr._cachemgr.update(1, 3, state='OFFLINE', last_seen=pastdatetime)
-        self.server.lease_mgr._cachemgr.update(1, -1, state='ONLINE', last_seen=pastdatetime)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][0]['state'], 'ONLINE')
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'ONLINE')
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][2]['state'], 'ONLINE')
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][3]['state'], 'ONLINE')
-        self.server.lease_mgr._cachemgr.remove(1, -1)
-        self.assertTrue(1 not in self.server.lease_mgr._cachemgr.entries)
-        self.stop()
-
-    def test_105_layouts_cache_heartbeat_dead(self):
-        self.start()
-        self.assertHeartbeatNode()
-        pastdatetime = datetime.datetime.now() - datetime.timedelta(seconds=self.server.lease_mgr.heartbeat_dead+1)
-        self.server.lease_mgr._cachemgr.update(99, 1, state='ONLINE', last_seen=pastdatetime)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[99][1]['state'], 'ONLINE')
-        for i in range(0, 3*self.server.lease_mgr.heartbeat_count-1):
-            self.server.lease_mgr.check_heartbeat()
-        self.assertTrue(99 not in self.server.lease_mgr._cachemgr.entries)
-        self.stop()
-
-    def test_110_layouts_cache_heartbeat_recevive_in_online(self):
-        self.start()
-        self.assertHeartbeatNode()
-        pastdatetime = datetime.datetime.now() - datetime.timedelta(seconds=self.server.lease_mgr.heartbeat_timeout+1)
-        self.server.lease_mgr._cachemgr.update(1, 1, state='ONLINE', last_seen=pastdatetime)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'ONLINE')
-        for i in range(0, self.server.lease_mgr.heartbeat_count-2):
-            self.server.lease_mgr.check_heartbeat()
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'ONLINE')
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['count'], i+1)
-        self.server.lease_mgr.heartbeat_hadd(1, 1)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['count'], 0)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'ONLINE')
-        self.stop()
-
-    def test_111_layouts_cache_heartbeat_receive_in_pending(self):
-        self.start()
-        self.assertHeartbeatNode()
-        pastdatetime = datetime.datetime.now() - datetime.timedelta(seconds=self.server.lease_mgr.heartbeat_timeout+1)
-        self.server.lease_mgr._cachemgr.update(1, 1, state='ONLINE', last_seen=pastdatetime)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'ONLINE')
-        for i in range(0, self.server.lease_mgr.heartbeat_count-1):
-            self.server.lease_mgr.check_heartbeat()
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'ONLINE')
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['count'], i+1)
-        self.server.lease_mgr.check_heartbeat()
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['count'], 0)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'PENDING')
-        for i in range(0, self.server.lease_mgr.heartbeat_count-1):
-            self.server.lease_mgr.check_heartbeat()
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'PENDING')
-            self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['count'], i+1)
-        self.server.lease_mgr.heartbeat_hadd(1, 1)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['count'], 0)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'ONLINE')
-        self.stop()
-
-    def test_120_layouts_cache_remove(self):
-        self.start()
-        self.assertHeartbeatNode()
-        pastdatetime = datetime.datetime.now() - datetime.timedelta(seconds=self.server.lease_mgr.heartbeat_timeout+1)
-        self.server.lease_mgr._cachemgr.update(1, 1, state='ONLINE', last_seen=pastdatetime)
-        self.assertEqual(self.server.lease_mgr._cachemgr.entries[1][1]['state'], 'ONLINE')
-        self.server.lease_mgr._cachemgr.remove(1, 1)
-        self.assertEqual(self.server.lease_mgr._cachemgr.len(), 0)
-        self.stop()
-
-    def test_130_layouts_resolv_add(self):
-        self.start()
-        self.assertHeartbeatNode()
-        pastdatetime = datetime.datetime.now() - datetime.timedelta(seconds=self.server.lease_mgr.heartbeat_timeout+1)
-        options={'name':'name','location':'location','cmd_classes':'0x0000','otherkey':'other','otherkey2':'other2',}
-        self.server.lease_mgr.repair_lease(1, 1, options)
-        res = self.server.lease_mgr.resolv_hadd(1,1)
-        print res
-        self.assertEqual(res['name'], 'name')
-        self.assertEqual(res['location'], 'location')
-        for p in res['params']:
-            print p
-            self.assertTrue(p['key'] in ['otherkey', 'otherkey2'])
-            self.assertTrue(p['value'] in ['other', 'other2'])
-        self.stop()
-
-    def test_140_layouts_remove_lease(self):
-        self.start()
-        self.assertHeartbeatNode()
-        pastdatetime = datetime.datetime.now() - datetime.timedelta(seconds=self.server.lease_mgr.heartbeat_timeout+1)
-        options={'name':'name','location':'location','cmd_classes':'0x0000','otherkey':'other','otherkey2':'other2',}
-        self.server.lease_mgr.repair_lease(1, 0, options)
-        self.server.lease_mgr.repair_lease(1, 1, options)
-        self.server.lease_mgr.repair_lease(1, 2, options)
-        self.server.lease_mgr.repair_lease(1, 3, options)
-        self.server.lease_mgr.remove_lease(1, 3)
-        self.assertEqual(self.server.lease_mgr.resolv_hadd(1, 3), None)
-        self.server.lease_mgr.remove_lease(1, -1)
-        self.assertEqual(self.server.lease_mgr.resolv_hadd(1, 0), None)
-        self.assertEqual(self.server.lease_mgr.resolv_hadd(1, 1), None)
-        self.assertEqual(self.server.lease_mgr.resolv_hadd(1, 2), None)
-        self.stop()
-
-    def test_141_layouts_remove_bad_lease(self):
-        self.start()
-        self.assertHeartbeatNode()
-        pastdatetime = datetime.datetime.now() - datetime.timedelta(seconds=self.server.lease_mgr.heartbeat_timeout+1)
-        options={'name':'name','location':'location','cmd_classes':'0x0000','otherkey':'other','otherkey2':'other2',}
-        self.server.lease_mgr.remove_lease(1, 3)
-        self.server.lease_mgr.remove_lease(1, -1)
-        self.stop()
-
-    def test_150_layouts_get_lease_ctrl(self):
-        self.start()
-        self.assertHeartbeatNode()
-        options={'name':'name','location':'location','cmd_classes':'0x0000','otherkey':'other','otherkey2':'other2',}
-        res = self.server.lease_mgr.new_lease(-1, 3, options)
-        print res
-        self.assertEqual(res['add_ctrl'], 10)
-        self.assertEqual(res['add_node'], 0)
-        self.assertEqual(res['name'], 'name')
-        self.assertEqual(res['location'], 'location')
-        for p in res['params']:
-            print p
-            self.assertTrue(p['key'] in ['otherkey', 'otherkey2'])
-            self.assertTrue(p['value'] in ['other', 'other2'])
-        res = self.server.lease_mgr.new_lease(-1, 3, options)
-        print res
-        self.assertEqual(res['add_ctrl'], 11)
-        self.assertEqual(res['add_node'], 0)
-        self.assertEqual(res['name'], 'name')
-        self.assertEqual(res['location'], 'location')
-        for p in res['params']:
-            print p
-            self.assertTrue(p['key'] in ['otherkey', 'otherkey2'])
-            self.assertTrue(p['value'] in ['other', 'other2'])
-        self.stop()
-
-    def test_152_layouts_get_lease_node(self):
-        self.start()
-        self.assertHeartbeatNode()
-        options={'name':'name','location':'location','cmd_classes':'0x0000','otherkey':'other','otherkey2':'other2',}
-        res = self.server.lease_mgr.new_lease(-1, 3, options)
-        print res
-        self.assertEqual(res['add_ctrl'], 10)
-        self.assertEqual(res['add_node'], 0)
-        self.assertEqual(res['name'], 'name')
-        self.assertEqual(res['location'], 'location')
-        for p in res['params']:
-            print p
-            self.assertTrue(p['key'] in ['otherkey', 'otherkey2'])
-            self.assertTrue(p['value'] in ['other', 'other2'])
-        res = self.server.lease_mgr.new_lease(10, 3, options)
-        print res
-        self.assertEqual(res['add_ctrl'], 10)
-        self.assertEqual(res['add_node'], 1)
-        self.assertEqual(res['name'], 'name')
-        self.assertEqual(res['location'], 'location')
-        for p in res['params']:
-            print p
-            self.assertTrue(p['key'] in ['otherkey', 'otherkey2'])
-            self.assertTrue(p['value'] in ['other', 'other2'])
-        res = self.server.lease_mgr.new_lease(10, -1, options)
-        print res
-        self.assertEqual(res['add_ctrl'], 10)
-        self.assertEqual(res['add_node'], 2)
-        self.assertEqual(res['name'], 'name')
-        self.assertEqual(res['location'], 'location')
-        for p in res['params']:
-            print p
-            self.assertTrue(p['key'] in ['otherkey', 'otherkey2'])
-            self.assertTrue(p['value'] in ['other', 'other2'])
-        self.stop()
-
-    def test_153_layouts_get_bad_lease(self):
-        self.start()
-        self.assertHeartbeatNode()
-        options={'name':'name','location':'location','cmd_classes':'0x0000','otherkey':'other','otherkey2':'other2',}
-        res = self.server.lease_mgr.new_lease(2, 3, options)
-        self.assertEqual(res, None)
-        self.stop()
-
-    def test_160_layouts_resolv_cmd_classes(self):
-        self.start()
-        self.assertHeartbeatNode()
-        options={'name':'name','location':'location','cmd_classes':'0x1050','otherkey':'other','otherkey2':'other2',}
-        res = self.server.lease_mgr.new_lease(-1, 3, options)
-        options={'name':'name','location':'location','cmd_classes':'0x0027','otherkey':'other','otherkey2':'other2',}
-        res = self.server.lease_mgr.new_lease(10, -1, options)
-        options={'name':'name','location':'location','cmd_classes':'0x0027','otherkey':'other','otherkey2':'other2',}
-        res = self.server.lease_mgr.new_lease(10, -1, options)
-        options={'name':'name','location':'location','cmd_classes':'0x0028,0x0027','otherkey':'other','otherkey2':'other2',}
-        res = self.server.lease_mgr.new_lease(10, -1, options)
-        res = self.server.lease_mgr.resolv_cmd_classes(cmd_classes="0x0027")
-        print res
-        self.assertEqual(len(res), 3)
-        self.assertNotEqual(json_dumps(res), None)
-        res = self.server.lease_mgr.resolv_cmd_classes(cmd_classes=["0x1050","0x0028"])
-        print res
-        self.assertEqual(len(res), 2)
-        res = self.server.lease_mgr.resolv_cmd_classes()
-        print res
-        self.assertEqual(len(res), 4)
-        self.stop()
-
-    def test_170_layouts_resolv_name(self):
-        self.start()
-        self.assertHeartbeatNode()
-        options={'name':'name1','location':'location','cmd_classes':'0x1050','otherkey':'other','otherkey2':'other2',}
-        res = self.server.lease_mgr.new_lease(-1, 3, options)
-        options={'name':'name2','location':'kitchen.location','cmd_classes':'0x0027','otherkey':'other','otherkey2':'other2',}
-        res = self.server.lease_mgr.new_lease(10, -1, options)
-        options={'name':'name3','location':'lights.kitchen.location','cmd_classes':'0x0027','otherkey':'other','otherkey2':'other2',}
-        res = self.server.lease_mgr.new_lease(10, -1, options)
-        options={'name':'name4','location':'garden.location','cmd_classes':'0x0028,0x0027','otherkey':'other','otherkey2':'other2',}
-        res = self.server.lease_mgr.new_lease(10, -1, options)
-        res = self.server.lease_mgr.resolv_name(name="name1")
-        print res
-        self.assertEqual(len(res), 1)
-        self.assertNotEqual(json_dumps(res), None)
-        res = self.server.lease_mgr.resolv_name(location="location")
-        print res
-        self.assertEqual(len(res), 4)
-        res = self.server.lease_mgr.resolv_name(location="kitchen.location")
-        print res
-        self.assertEqual(len(res), 2)
-        self.stop()
