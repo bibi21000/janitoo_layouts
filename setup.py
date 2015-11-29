@@ -92,7 +92,7 @@ setup(
                      'janitoo_db == %s'%"0.0.7",
                     ],
     dependency_links = [
-      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo_db-%s'%"0.0.7",
+      'https://github.com/bibi21000/janitoo_db/archive/master.zip#egg=janitoo_db-%s'%"0.0.7",
     ],
     entry_points = {
         "janitoo.models": [
