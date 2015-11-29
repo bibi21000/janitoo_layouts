@@ -33,7 +33,7 @@ from pkg_resources import iter_entry_points
 from sqlalchemy.orm import sessionmaker, scoped_session
 from alembic import command as alcommand
 
-from janitoo_nosetests.models import JNTTModels
+from janitoo_nosetests.models import JNTTModels, JNTTModelsCommon
 
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
@@ -50,15 +50,7 @@ COMMAND_DISCOVERY = 0x5000
 assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
 ##############################################################
 
-class TestFullModels(JNTTModels):
-    """Test the server
+class TestFullModels(JNTTModels, JNTTModelsCommon):
+    """Test the full model
     """
-    def test_101_engine(self):
-        options = JNTOptions({'conf_file':'tests/data/janitoo_layouts.conf'})
-        options.load()
-        engine = create_db_engine(options)
-        self.dbmaker = sessionmaker()
-        # Bind the sessionmaker to engine
-        self.dbmaker.configure(bind=engine)
-        self.dbsession = scoped_session(self.dbmaker)
-        Base.metadata.create_all(bind=engine)
+    pass
