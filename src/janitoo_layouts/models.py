@@ -43,7 +43,11 @@ def extend( jntmodel ):
         description = sa.Column(sa.Text, nullable=False)
         layouts = relationship("Layouts", lazy="dynamic", backref="category",
                                    cascade="all, delete-orphan")
+
     jntmodel.LayoutsCategories = LayoutsCategories
+
+    # hack to get class pickable
+    setattr(sys.modules[__name__], 'LayoutsCategories', LayoutsCategories)
 
     class Layouts(Base, CRUDMixin):
         __tablename__ = "core_layouts"
@@ -120,3 +124,6 @@ def extend( jntmodel ):
             return layouts
 
     jntmodel.Layouts = Layouts
+
+    # hack to get class pickable
+    setattr(sys.modules[__name__], 'Layouts', Layouts)
