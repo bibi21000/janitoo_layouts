@@ -28,6 +28,7 @@ __email__ = 'bibi21000@gmail.com'
 __copyright__ = "Copyright © 2014-2015 Sébastien GALLET aka bibi21000"
 import logging
 logger = logging.getLogger( "janitoo.layouts" )
+import sys
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship, backref
 from janitoo_db.helpers import CRUDMixin
