@@ -51,9 +51,10 @@ class TestSerser(JNTTDockerServer, JNTTDockerServerCommon):
     broker_user = 'toto'
     broker_password = 'toto'
     server_class = JNTServer
-    server_conf = "tests/data/janitoo_lirc.conf"
+    server_conf = "tests/data/janitoo_layouts.conf"
     hadds = [HADD%(151,0), HADD%(151,1)]
 
     def test_040_server_start_no_error_in_log(self):
+        JNTTDockerServer.wipTest()
         JNTTDockerServer.onlyDockerTest()
         JNTTDockerServerCommon.minimal_040_server_start_reload_restart(self)
