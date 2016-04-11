@@ -59,7 +59,7 @@ class LayoutsThread(JNTBusThread):
     def init_bus(self):
         """Build the bus
         """
-        from janitoo_layouts.bus import RrdBus
+        from janitoo_layouts.bus import LayoutsBus
         self.section = 'layouts'
         self.bus = LayoutsBus(options=self.options, oid=self.section, product_name="Layouts controller")
 
