@@ -38,8 +38,9 @@ from janitoo.node import JNTNode
 from janitoo.value import JNTValue
 from janitoo.classes import COMMAND_DESC
 
-def make_thread(options):
-    if get_option_autostart(options, 'layouts') == True:
+OID = 'layouts'
+def make_thread(options, force=False):
+    if get_option_autostart(options, OID) == True or force:
         return LayoutsThread(options)
     else:
         return None
@@ -60,6 +61,6 @@ class LayoutsThread(JNTBusThread):
         """Build the bus
         """
         from janitoo_layouts.bus import LayoutsBus
-        self.section = 'layouts'
+        self.section = OID
         self.bus = LayoutsBus(options=self.options, oid=self.section, product_name="Layouts controller")
 
