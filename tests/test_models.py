@@ -40,13 +40,17 @@ from janitoo_db.base import Base, create_db_engine
 
 import janitoo_db.models as jntmodels
 
-class TestModels(JNTTModels):
+class ModelsCommon():
     """Test the models
     """
-    models_conf = "tests/data/janitoo_layouts.conf"
-
     def test_001_layouts(self):
         category = jntmodels.LayoutsCategories(key="key_cat", name="test_cat", description="test_description")
         layout = jntmodels.Layouts(key="key_layout", name="test_layout", description="test_description", layoutcategory=category)
         self.dbsession.merge(category, layout)
         self.dbsession.commit()
+
+class TestModels(JNTTModels, ModelsCommon):
+    """Test the models
+    """
+    models_conf = "tests/data/janitoo_layouts.conf"
+

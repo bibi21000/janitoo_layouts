@@ -47,7 +47,7 @@ from janitoo.value import JNTValue
 from janitoo.classes import COMMAND_DESC
 from janitoo.bus import JNTBus
 from janitoo.mqtt import MQTTClient
-from janitoo.threads.http import HttpResourceComponent
+from janitoo_factory.threads.http import HttpResourceComponent
 
 ##############################################################
 #Check that we are in sync with the official command classes
