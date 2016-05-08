@@ -58,7 +58,7 @@ class CommonServer(JNTTDBServerCommon):
     server_conf = "tests/data/janitoo_layouts.conf"
     hadds = [HADD%(159,0)]
 
-class TestDbSerser(JNTTDBServer, CommonServer):
+class TestDbSerser(CommonServer, JNTTDBServer):
     """Test the server
     """
     pass
