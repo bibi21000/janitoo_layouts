@@ -35,8 +35,7 @@ import mock
 import logging
 
 from janitoo_nosetests import JNTTBase
-from janitoo_nosetests.dbserver import JNTTDBDockerServerCommon, JNTTDBDockerServer
-
+from janitoo_nosetests.dbserver import JNTTDBDockerServerCommon, JNTTDBDockerServer, jntt_docker_dbserver
 from janitoo_nosetests.models import jntt_docker_models, jntt_docker_fullmodels
 
 from janitoo.runner import Runner, jnt_parse_args
@@ -55,18 +54,7 @@ from test_full_models import CommonFullModels
 #Launch ModelsCommon tests for every supported database
 jntt_docker_fullmodels(__name__, CommonFullModels)
 
-class TestLayoutsSerser(JNTTDBDockerServer, JNTTDBDockerServerCommon):
-    """Test the server
-    """
-    loglevel = logging.DEBUG
-    path = '/tmp/janitoo_test'
-    broker_user = 'toto'
-    broker_password = 'toto'
-    server_class = JNTServer
-    server_conf = "tests/data/janitoo_layouts.conf"
-    hadds = [HADD%(159,0)]
+from test_server import CommonServer
+#Launch CommonServer tests for every supported database
+jntt_docker_dbserver(__name__, CommonServer)
 
-    def test_040_server_start_no_error_in_log(self):
-        JNTTDockerServer.wipTest()
-        JNTTDockerServer.onlyDockerTest()
-        JNTTDockerServerCommon.minimal_040_server_start_reload_restart(self)
