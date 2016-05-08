@@ -35,7 +35,7 @@ import mock
 import logging
 
 from janitoo_nosetests import JNTTBase
-from janitoo_nosetests.server import JNTTDockerServerCommon, JNTTDockerServer
+from janitoo_nosetests.dbserver import JNTTDBDockerServerCommon, JNTTDBDockerServer
 
 from janitoo_nosetests.models import jntt_docker_models, jntt_docker_fullmodels
 
@@ -55,7 +55,7 @@ from test_full_models import CommonFullModels
 #Launch ModelsCommon tests for every supported database
 jntt_docker_fullmodels(__name__, CommonFullModels)
 
-class TestLayoutsSerser(JNTTDockerServer, JNTTDockerServerCommon):
+class TestLayoutsSerser(JNTTDBDockerServer, JNTTDBDockerServerCommon):
     """Test the server
     """
     loglevel = logging.DEBUG
