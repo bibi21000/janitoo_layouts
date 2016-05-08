@@ -48,4 +48,4 @@ class CommonFullModels(JNTTFullModelsCommon):
 class TestFullModels(JNTTFullModels, CommonFullModels):
     """Test the full model
     """
-    pass
+    models_conf = "tests/data/janitoo_layouts.conf"
