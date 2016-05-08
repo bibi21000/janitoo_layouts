@@ -40,7 +40,12 @@ from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
 from janitoo_db.migrate import Config as alConfig, collect_configs, janitoo_config
 
-class TestFullModels(JNTTFullModels, JNTTFullModelsCommon):
+class CommonFullModels(JNTTFullModelsCommon):
+    """Test the full model
+    """
+    pass
+
+class TestFullModels(JNTTFullModels, CommonFullModels):
     """Test the full model
     """
     pass
