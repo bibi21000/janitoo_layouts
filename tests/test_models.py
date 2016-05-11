@@ -44,6 +44,7 @@ class ModelsCommon(JNTTModelsCommon):
     """Test the models
     """
     def test_001_layouts(self):
+        self.create_all()
         category = jntmodels.LayoutsCategories(key="key_cat", name="test_cat", description="test_description")
         layout = jntmodels.Layouts(key="key_layout", name="test_layout", description="test_description", layoutcategory=category)
         self.dbsession.merge(category, layout)
