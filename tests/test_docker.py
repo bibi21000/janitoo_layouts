@@ -48,7 +48,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 from test_models import ModelsCommon
 #Launch ModelsCommon tests for every supported database
-jntt_docker_models(__name__, ModelsCommon)
+jntt_docker_models(__name__, ModelsCommon, prefix='Layouts')
 
 from test_full_models import CommonFullModels
 #Launch ModelsCommon tests for every supported database
