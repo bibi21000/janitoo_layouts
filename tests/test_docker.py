@@ -52,9 +52,9 @@ jntt_docker_models(__name__, ModelsCommon, prefix='Layouts')
 
 from test_full_models import CommonFullModels
 #Launch ModelsCommon tests for every supported database
-jntt_docker_fullmodels(__name__, CommonFullModels)
+jntt_docker_fullmodels(__name__, CommonFullModels, prefix='Layouts')
 
 from test_server import CommonServer
 #Launch CommonServer tests for every supported database
-jntt_docker_dbserver(__name__, CommonServer)
+jntt_docker_dbserver(__name__, CommonServer, prefix='Layouts')
 
