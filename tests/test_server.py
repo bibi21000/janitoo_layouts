@@ -91,3 +91,4 @@ class TestDbSerser(CommonServer, JNTTDBServerCommon, JNTTDBServer):
     """Test the server
     """
     pass
+
