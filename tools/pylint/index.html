@@ -1,0 +1,825 @@
+<html>
+<body>
+<div>
+<h1>Report</h1>
+<p>149 statements analysed.</p><div>
+<h2>Statistics by type</h2>
+<table>
+<tr class="header">
+<th>type</th>
+<th>number</th>
+<th>old number</th>
+<th>difference</th>
+<th>%documented</th>
+<th>%badname</th>
+</tr>
+<tr class="even">
+<td>module</td>
+<td>5</td>
+<td>NC</td>
+<td>NC</td>
+<td>80.00</td>
+<td>0.00</td>
+</tr>
+<tr class="odd">
+<td>class</td>
+<td>5</td>
+<td>NC</td>
+<td>NC</td>
+<td>60.00</td>
+<td>0.00</td>
+</tr>
+<tr class="even">
+<td>method</td>
+<td>11</td>
+<td>NC</td>
+<td>NC</td>
+<td>90.91</td>
+<td>0.00</td>
+</tr>
+<tr class="odd">
+<td>function</td>
+<td>2</td>
+<td>NC</td>
+<td>NC</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>External dependencies</h2>
+<pre>janitoo 
+  \-bus (janitoo_layouts.bus)
+  \-classes (janitoo_layouts.thread,janitoo_layouts.bus)
+  \-component (janitoo_layouts.bus)
+  \-mqtt (janitoo_layouts.server,janitoo_layouts.bus)
+  \-node (janitoo_layouts.thread,janitoo_layouts.bus)
+  \-options (janitoo_layouts.thread,janitoo_layouts.bus)
+  \-server (janitoo_layouts.server)
+  \-thread (janitoo_layouts.thread,janitoo_layouts.bus)
+  \-utils (janitoo_layouts.thread,janitoo_layouts.server,janitoo_layouts.bus)
+  \-value (janitoo_layouts.thread,janitoo_layouts.bus)
+janitoo_db 
+  \-base (janitoo_layouts.models)
+  \-helpers (janitoo_layouts.models)
+janitoo_factory 
+  \-threads 
+    \-http (janitoo_layouts.bus)
+pkg_resources (janitoo_layouts.thread,janitoo_layouts.server,janitoo_layouts.bus)
+sqlalchemy (janitoo_layouts.models)
+  \-orm (janitoo_layouts.models)</pre></div>
+<div>
+<h2>Raw metrics</h2>
+<table>
+<tr class="header">
+<th>type</th>
+<th>number</th>
+<th>%</th>
+<th>previous</th>
+<th>difference</th>
+</tr>
+<tr class="even">
+<td>code</td>
+<td>246</td>
+<td>69.49</td>
+<td>NC</td>
+<td>NC</td>
+</tr>
+<tr class="odd">
+<td>docstring</td>
+<td>60</td>
+<td>16.95</td>
+<td>NC</td>
+<td>NC</td>
+</tr>
+<tr class="even">
+<td>comment</td>
+<td>16</td>
+<td>4.52</td>
+<td>NC</td>
+<td>NC</td>
+</tr>
+<tr class="odd">
+<td>empty</td>
+<td>32</td>
+<td>9.04</td>
+<td>NC</td>
+<td>NC</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>Duplication</h2>
+<table>
+<tr class="header">
+<th>&#160;</th>
+<th>now</th>
+<th>previous</th>
+<th>difference</th>
+</tr>
+<tr class="even">
+<th>nb duplicated lines</th>
+<td>357</td>
+<td>NC</td>
+<td>NC</td>
+</tr>
+<tr class="odd">
+<th>percent duplicated lines</th>
+<td>98.892</td>
+<td>NC</td>
+<td>NC</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>Messages by category</h2>
+<table>
+<tr class="header">
+<th>type</th>
+<th>number</th>
+<th>previous</th>
+<th>difference</th>
+</tr>
+<tr class="even">
+<td>convention</td>
+<td>17</td>
+<td>NC</td>
+<td>NC</td>
+</tr>
+<tr class="odd">
+<td>refactor</td>
+<td>4</td>
+<td>NC</td>
+<td>NC</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>42</td>
+<td>NC</td>
+<td>NC</td>
+</tr>
+<tr class="odd">
+<td>error</td>
+<td>6</td>
+<td>NC</td>
+<td>NC</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>% errors / warnings by module</h2>
+<table>
+<tr class="header">
+<th>module</th>
+<th>error</th>
+<th>warning</th>
+<th>refactor</th>
+<th>convention</th>
+</tr>
+<tr class="even">
+<td>janitoo_layouts.models</td>
+<td>66.67</td>
+<td>2.38</td>
+<td>0.00</td>
+<td>58.82</td>
+</tr>
+<tr class="odd">
+<td>janitoo_layouts.bus</td>
+<td>16.67</td>
+<td>52.38</td>
+<td>100.00</td>
+<td>11.76</td>
+</tr>
+<tr class="even">
+<td>janitoo_layouts.server</td>
+<td>16.67</td>
+<td>16.67</td>
+<td>0.00</td>
+<td>11.76</td>
+</tr>
+<tr class="odd">
+<td>janitoo_layouts.thread</td>
+<td>0.00</td>
+<td>26.19</td>
+<td>0.00</td>
+<td>11.76</td>
+</tr>
+<tr class="even">
+<td>janitoo_layouts</td>
+<td>0.00</td>
+<td>2.38</td>
+<td>0.00</td>
+<td>5.88</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>Messages</h2>
+<table>
+<tr class="header">
+<th>message id</th>
+<th>occurrences</th>
+</tr>
+<tr class="even">
+<td>unused-import</td>
+<td>39</td>
+</tr>
+<tr class="odd">
+<td>missing-docstring</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>no-member</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>invalid-name</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>duplicate-code</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>bad-whitespace</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>bad-continuation</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>superfluous-parens</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>reimported</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>method-hidden</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>dangerous-default-value</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>bare-except</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>Global evaluation</h2>
+Your code has been rated at 3.76/10</div>
+<div>
+<h2>Messages</h2>
+<table>
+<tr class="header">
+<th>type</th>
+<th>module</th>
+<th>object</th>
+<th>line</th>
+<th>col_offset</th>
+<th>message</th>
+</tr>
+<tr class="even">
+<td>convention</td>
+<td>janitoo_layouts</td>
+<td>&#160;</td>
+<td>1</td>
+<td>0</td>
+<td>Missing module docstring</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts</td>
+<td>&#160;</td>
+<td>25</td>
+<td>0</td>
+<td>No exception type(s) specified</td>
+</tr>
+<tr class="even">
+<td>convention</td>
+<td>janitoo_layouts.thread</td>
+<td>&#160;</td>
+<td>30</td>
+<td>0</td>
+<td>Invalid constant name "logger"</td>
+</tr>
+<tr class="odd">
+<td>convention</td>
+<td>janitoo_layouts.thread</td>
+<td>make_thread</td>
+<td>42</td>
+<td>0</td>
+<td>Missing function docstring</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.thread</td>
+<td>LayoutsThread.__init__</td>
+<td>52</td>
+<td>4</td>
+<td>Dangerous default value {} as argument</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.thread</td>
+<td>&#160;</td>
+<td>31</td>
+<td>0</td>
+<td>Unused import sys</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.thread</td>
+<td>&#160;</td>
+<td>31</td>
+<td>0</td>
+<td>Unused import os</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.thread</td>
+<td>&#160;</td>
+<td>32</td>
+<td>0</td>
+<td>Unused import threading</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.thread</td>
+<td>&#160;</td>
+<td>33</td>
+<td>0</td>
+<td>Unused get_distribution imported from pkg_resources</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.thread</td>
+<td>&#160;</td>
+<td>33</td>
+<td>0</td>
+<td>Unused DistributionNotFound imported from pkg_resources</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.thread</td>
+<td>&#160;</td>
+<td>34</td>
+<td>0</td>
+<td>Unused BaseThread imported from janitoo.thread</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.thread</td>
+<td>&#160;</td>
+<td>36</td>
+<td>0</td>
+<td>Unused HADD imported from janitoo.utils</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.thread</td>
+<td>&#160;</td>
+<td>37</td>
+<td>0</td>
+<td>Unused JNTNode imported from janitoo.node</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.thread</td>
+<td>&#160;</td>
+<td>38</td>
+<td>0</td>
+<td>Unused JNTValue imported from janitoo.value</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.thread</td>
+<td>&#160;</td>
+<td>39</td>
+<td>0</td>
+<td>Unused COMMAND_DESC imported from janitoo.classes</td>
+</tr>
+<tr class="odd">
+<td>convention</td>
+<td>janitoo_layouts.server</td>
+<td>&#160;</td>
+<td>55</td>
+<td>0</td>
+<td>Exactly one space required after comma
+            return os.path.join("/opt/janitoo/src",'janitoo_layouts/config')
+                                                  ^</td>
+</tr>
+<tr class="even">
+<td>convention</td>
+<td>janitoo_layouts.server</td>
+<td>&#160;</td>
+<td>29</td>
+<td>0</td>
+<td>Invalid constant name "logger"</td>
+</tr>
+<tr class="odd">
+<td>error</td>
+<td>janitoo_layouts.server</td>
+<td>LayoutsServer._get_egg_path</td>
+<td>53</td>
+<td>19</td>
+<td>Instance of 'str' has no '__file__' member</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.server</td>
+<td>&#160;</td>
+<td>30</td>
+<td>0</td>
+<td>Unused import sys</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.server</td>
+<td>&#160;</td>
+<td>31</td>
+<td>0</td>
+<td>Unused import threading</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.server</td>
+<td>&#160;</td>
+<td>32</td>
+<td>0</td>
+<td>Unused DistributionNotFound imported from pkg_resources</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.server</td>
+<td>&#160;</td>
+<td>33</td>
+<td>0</td>
+<td>Unused HADD_SEP imported from janitoo.utils</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.server</td>
+<td>&#160;</td>
+<td>33</td>
+<td>0</td>
+<td>Unused HADD imported from janitoo.utils</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.server</td>
+<td>&#160;</td>
+<td>34</td>
+<td>0</td>
+<td>Unused json_loads imported from janitoo.utils</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.server</td>
+<td>&#160;</td>
+<td>34</td>
+<td>0</td>
+<td>Unused json_dumps imported from janitoo.utils</td>
+</tr>
+<tr class="odd">
+<td>convention</td>
+<td>janitoo_layouts.models</td>
+<td>&#160;</td>
+<td>37</td>
+<td>0</td>
+<td>No space allowed after bracket
+def extend( jntmodel ):
+          ^</td>
+</tr>
+<tr class="even">
+<td>convention</td>
+<td>janitoo_layouts.models</td>
+<td>&#160;</td>
+<td>37</td>
+<td>0</td>
+<td>No space allowed before bracket
+def extend( jntmodel ):
+                     ^</td>
+</tr>
+<tr class="odd">
+<td>convention</td>
+<td>janitoo_layouts.models</td>
+<td>&#160;</td>
+<td>46</td>
+<td>0</td>
+<td>Wrong continued indentation.
+                                   cascade="all, delete-orphan")
+                               |   ^</td>
+</tr>
+<tr class="even">
+<td>convention</td>
+<td>janitoo_layouts.models</td>
+<td>&#160;</td>
+<td>59</td>
+<td>0</td>
+<td>Wrong continued indentation.
+                                  sa.ForeignKey('core_layouts_categories.key',
+                                  ^|</td>
+</tr>
+<tr class="odd">
+<td>convention</td>
+<td>janitoo_layouts.models</td>
+<td>&#160;</td>
+<td>62</td>
+<td>0</td>
+<td>Wrong continued indentation.
+                                  nullable=False)
+                                  ^|</td>
+</tr>
+<tr class="even">
+<td>convention</td>
+<td>janitoo_layouts.models</td>
+<td>&#160;</td>
+<td>30</td>
+<td>0</td>
+<td>Invalid constant name "logger"</td>
+</tr>
+<tr class="odd">
+<td>convention</td>
+<td>janitoo_layouts.models</td>
+<td>extend</td>
+<td>37</td>
+<td>0</td>
+<td>Missing function docstring</td>
+</tr>
+<tr class="even">
+<td>convention</td>
+<td>janitoo_layouts.models</td>
+<td>extend.LayoutsCategories</td>
+<td>39</td>
+<td>4</td>
+<td>Missing class docstring</td>
+</tr>
+<tr class="odd">
+<td>convention</td>
+<td>janitoo_layouts.models</td>
+<td>extend.Layouts</td>
+<td>53</td>
+<td>4</td>
+<td>Missing class docstring</td>
+</tr>
+<tr class="even">
+<td>convention</td>
+<td>janitoo_layouts.models</td>
+<td>extend.Layouts.get_all</td>
+<td>71</td>
+<td>8</td>
+<td>Missing method docstring</td>
+</tr>
+<tr class="odd">
+<td>error</td>
+<td>janitoo_layouts.models</td>
+<td>extend.Layouts.get_all</td>
+<td>72</td>
+<td>19</td>
+<td>Class 'Layouts' has no 'query' member</td>
+</tr>
+<tr class="even">
+<td>error</td>
+<td>janitoo_layouts.models</td>
+<td>extend.Layouts.get_layouts</td>
+<td>86</td>
+<td>25</td>
+<td>Class 'Layouts' has no 'query' member</td>
+</tr>
+<tr class="odd">
+<td>error</td>
+<td>janitoo_layouts.models</td>
+<td>extend.Layouts.as_dict</td>
+<td>108</td>
+<td>25</td>
+<td>Class 'LayoutsCategories' has no 'query' member</td>
+</tr>
+<tr class="even">
+<td>error</td>
+<td>janitoo_layouts.models</td>
+<td>extend.Layouts.as_dict</td>
+<td>116</td>
+<td>25</td>
+<td>Class 'Layouts' has no 'query' member</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.models</td>
+<td>&#160;</td>
+<td>33</td>
+<td>0</td>
+<td>Unused backref imported from sqlalchemy.orm</td>
+</tr>
+<tr class="even">
+<td>convention</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>59</td>
+<td>0</td>
+<td>Unnecessary parens after u'assert' keyword</td>
+</tr>
+<tr class="odd">
+<td>convention</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>33</td>
+<td>0</td>
+<td>Invalid constant name "logger"</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>55</td>
+<td>0</td>
+<td>Reimport 'COMMAND_DESC' (imported line 47)</td>
+</tr>
+<tr class="odd">
+<td>error</td>
+<td>janitoo_layouts.bus</td>
+<td>LayoutsBus.check_heartbeat</td>
+<td>70</td>
+<td>4</td>
+<td>An attribute defined in janitoo.bus line 237 hides this method</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>34</td>
+<td>0</td>
+<td>Unused import sys</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>34</td>
+<td>0</td>
+<td>Unused import os</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>35</td>
+<td>0</td>
+<td>Unused import threading</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>36</td>
+<td>0</td>
+<td>Unused import pickle</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>37</td>
+<td>0</td>
+<td>Unused import datetime</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>38</td>
+<td>0</td>
+<td>Unused DistributionNotFound imported from pkg_resources</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>38</td>
+<td>0</td>
+<td>Unused get_distribution imported from pkg_resources</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>39</td>
+<td>0</td>
+<td>Unused BaseThread imported from janitoo.thread</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>39</td>
+<td>0</td>
+<td>Unused JNTBusThread imported from janitoo.thread</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>40</td>
+<td>0</td>
+<td>Unused get_option_autostart imported from janitoo.options</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>41</td>
+<td>0</td>
+<td>Unused HADD_SEP imported from janitoo.utils</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>41</td>
+<td>0</td>
+<td>Unused HADD imported from janitoo.utils</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>42</td>
+<td>0</td>
+<td>Unused TOPIC_VALUES_USERS imported from janitoo.utils</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>42</td>
+<td>0</td>
+<td>Unused TOPIC_VALUES imported from janitoo.utils</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>43</td>
+<td>0</td>
+<td>Unused json_loads imported from janitoo.utils</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>43</td>
+<td>0</td>
+<td>Unused json_dumps imported from janitoo.utils</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>44</td>
+<td>0</td>
+<td>Unused JNTComponent imported from janitoo.component</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>45</td>
+<td>0</td>
+<td>Unused JNTNode imported from janitoo.node</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>46</td>
+<td>0</td>
+<td>Unused JNTValue imported from janitoo.value</td>
+</tr>
+<tr class="odd">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>49</td>
+<td>0</td>
+<td>Unused MQTTClient imported from janitoo.mqtt</td>
+</tr>
+<tr class="even">
+<td>warning</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>50</td>
+<td>0</td>
+<td>Unused HttpResourceComponent imported from janitoo_factory.threads.http</td>
+</tr>
+<tr class="odd">
+<td>refactor</td>
+<td>janitoo_layouts.bus</td>
+<td>&#160;</td>
+<td>1</td>
+<td>0</td>

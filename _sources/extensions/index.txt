@@ -1,0 +1,18 @@
+janitoo_layouts package
+=======================
+
+Show janitoo's extensions.
+
+Core extensions
+---------------
+
+Models
+^^^^^^
+
+ - janitoo_layouts (janitoo_layouts.models:extend)
+
+Threads
+^^^^^^^
+
+ - layouts (janitoo_layouts.thread:make_thread)
+
