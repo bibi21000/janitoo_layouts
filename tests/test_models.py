@@ -50,7 +50,7 @@ class ModelsCommon(JNTTModelsCommon):
         self.dbsession.merge(category, layout)
         self.dbsession.commit()
 
-class TestModels(JNTTModels, ModelsCommon):
+class TestModels(ModelsCommon, JNTTModels):
     """Test the models
     """
     models_conf = "tests/data/janitoo_layouts.conf"
