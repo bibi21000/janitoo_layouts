@@ -1,18 +1,7 @@
-janitoo_layouts package
-=======================
+Janitoo's extensions
+====================
 
-Show janitoo's extensions.
+This package contains the following extensions for Janitoo.
 
-Core extensions
----------------
-
-Models
-^^^^^^
-
- - janitoo_layouts (janitoo_layouts.models:extend)
-
-Threads
-^^^^^^^
-
- - layouts (janitoo_layouts.thread:make_thread)
+.. jnt-extensions::
 
