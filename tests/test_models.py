@@ -43,6 +43,7 @@ import janitoo_db.models as jntmodels
 class ModelsCommon(JNTTModelsCommon):
     """Test the models
     """
+    models_conf = "tests/data/janitoo_layouts.conf"
     def test_001_layouts(self):
         self.create_all()
         category = jntmodels.LayoutsCategories(key="key_cat", name="test_cat", description="test_description")
@@ -53,5 +54,4 @@ class ModelsCommon(JNTTModelsCommon):
 class TestModels(ModelsCommon, JNTTModels):
     """Test the models
     """
-    models_conf = "tests/data/janitoo_layouts.conf"
-
+    pass

@@ -43,9 +43,9 @@ from janitoo_db.migrate import Config as alConfig, collect_configs, janitoo_conf
 class CommonFullModels(JNTTFullModelsCommon):
     """Test the full model
     """
-    pass
+    models_conf = "tests/data/janitoo_layouts.conf"
 
 class TestFullModels(CommonFullModels, JNTTFullModels):
     """Test the full model
     """
-    models_conf = "tests/data/janitoo_layouts.conf"
+    pass
