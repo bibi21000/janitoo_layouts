@@ -54,7 +54,7 @@ def extend( jntmodel ):
         __tablename__ = "core_layouts"
 
         key = sa.Column(sa.String(255), primary_key=True)
-        value = sa.Column(sa.PickleType, nullable=False)
+        value = sa.Column(sa.PickleType)
         layoutcategory_key = sa.Column(sa.String(255), sa.ForeignKey('core_layouts_categories.key'),
                                      nullable=False)
 

@@ -26,7 +26,7 @@ def upgrade():
     )
     op.create_table('core_layouts',
     sa.Column('key', sa.String(length=255), nullable=False),
-    sa.Column('value', sa.PickleType(), nullable=False),
+    sa.Column('value', sa.PickleType()),
     sa.Column('layoutcategory_key', sa.String(length=255), nullable=False),
     sa.Column('name', sa.String(length=200), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
