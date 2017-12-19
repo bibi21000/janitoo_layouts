@@ -27,10 +27,10 @@ def upgrade():
     op.create_table('core_layouts',
     sa.Column('key', sa.String(length=255), nullable=False),
     sa.Column('value', sa.PickleType(), nullable=False),
-    sa.Column('layoutcategory', sa.String(length=255), nullable=False),
+    sa.Column('layoutcategory_key', sa.String(length=255), nullable=False),
     sa.Column('name', sa.String(length=200), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
-    sa.ForeignKeyConstraint(['layoutcategory'], ['core_layouts_categories.key'], name='fk_layouts_categories', use_alter=True),
+    sa.ForeignKeyConstraint(['layoutcategory_key'], ['core_layouts_categories.key']),
     sa.PrimaryKeyConstraint('key')
     )
     ### end Alembic commands ###

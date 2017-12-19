@@ -55,11 +55,12 @@ def extend( jntmodel ):
 
         key = sa.Column(sa.String(255), primary_key=True)
         value = sa.Column(sa.PickleType, nullable=False)
-        layoutcategory = sa.Column(sa.String(255),
-                                  sa.ForeignKey('core_layouts_categories.key',
-                                                use_alter=True,
-                                                name="fk_layouts_categories"),
-                                  nullable=False)
+        layoutcategory_key = sa.Column(sa.String(255), sa.ForeignKey('core_layouts_categories.key'),
+                                     nullable=False)
+
+        layoutcategory = relationship('LayoutsCategories', lazy="joined",
+                                        backref="core_layouts_categories", uselist=False,
+                                        foreign_keys=[layoutcategory_key])
 
         # The name (displayed in the form)
         name = sa.Column(sa.String(200), nullable=False)
