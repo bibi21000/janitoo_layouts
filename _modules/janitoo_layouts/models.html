@@ -5,13 +5,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>janitoo_layouts.models &mdash; janitoo_layouts 0.0.7 documentation</title>
+    <title>janitoo_layouts.models &#8212; janitoo_layouts 0.0.7 documentation</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -19,7 +17,8 @@
         VERSION:     '0.0.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -30,17 +29,17 @@
     <script type="text/javascript" src="../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="janitoo_layouts 0.0.7 documentation" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -110,7 +109,7 @@
     <div class="col-md-12 content">
       
   <h1>Source code for janitoo_layouts.models</h1><div class="highlight"><pre>
-<span class="c"># -*- coding: utf-8 -*-</span>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    janitoo_layouts.models.utils</span>
 <span class="sd">    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
@@ -118,94 +117,95 @@
 <span class="sd">    This module contains all related models.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">    This file is part of Janitoo.</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    This file is part of Janitoo.</span>
 
-<span class="s">    Janitoo is free software: you can redistribute it and/or modify</span>
-<span class="s">    it under the terms of the GNU General Public License as published by</span>
-<span class="s">    the Free Software Foundation, either version 3 of the License, or</span>
-<span class="s">    (at your option) any later version.</span>
+<span class="s2">    Janitoo is free software: you can redistribute it and/or modify</span>
+<span class="s2">    it under the terms of the GNU General Public License as published by</span>
+<span class="s2">    the Free Software Foundation, either version 3 of the License, or</span>
+<span class="s2">    (at your option) any later version.</span>
 
-<span class="s">    Janitoo is distributed in the hope that it will be useful,</span>
-<span class="s">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="s">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="s">    GNU General Public License for more details.</span>
+<span class="s2">    Janitoo is distributed in the hope that it will be useful,</span>
+<span class="s2">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="s2">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="s2">    GNU General Public License for more details.</span>
 
-<span class="s">    You should have received a copy of the GNU General Public License</span>
-<span class="s">    along with Janitoo. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="s2">    You should have received a copy of the GNU General Public License</span>
+<span class="s2">    along with Janitoo. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 
-<span class="s">&quot;&quot;&quot;</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s">&#39;Sébastien GALLET aka bibi21000&#39;</span>
-<span class="n">__email__</span> <span class="o">=</span> <span class="s">&#39;bibi21000@gmail.com&#39;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s">&quot;Copyright © 2014-2015 Sébastien GALLET aka bibi21000&quot;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Sébastien GALLET aka bibi21000&#39;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;bibi21000@gmail.com&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright © 2014-2015 Sébastien GALLET aka bibi21000&quot;</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="kn">as</span> <span class="nn">sa</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">relationship</span><span class="p">,</span> <span class="n">backref</span>
-<span class="kn">from</span> <span class="nn">janitoo_db.helpers</span> <span class="kn">import</span> <span class="n">CRUDMixin</span>
-<span class="kn">from</span> <span class="nn">janitoo_db.base</span> <span class="kn">import</span> <span class="n">Base</span>
+<span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">sa</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="k">import</span> <span class="n">relationship</span><span class="p">,</span> <span class="n">backref</span>
+<span class="kn">from</span> <span class="nn">janitoo_db.helpers</span> <span class="k">import</span> <span class="n">CRUDMixin</span>
+<span class="kn">from</span> <span class="nn">janitoo_db.base</span> <span class="k">import</span> <span class="n">Base</span>
 
 <div class="viewcode-block" id="extend"><a class="viewcode-back" href="../../api/index.html#janitoo_layouts.models.extend">[docs]</a><span class="k">def</span> <span class="nf">extend</span><span class="p">(</span> <span class="n">jntmodel</span> <span class="p">):</span>
 
     <span class="k">class</span> <span class="nc">LayoutsCategories</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">CRUDMixin</span><span class="p">):</span>
-        <span class="n">__tablename__</span> <span class="o">=</span> <span class="s">&quot;core_layouts_categories&quot;</span>
+        <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;core_layouts_categories&quot;</span>
 
-        <span class="n">key</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="n">description</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Text</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="n">layouts</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s">&quot;Layouts&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="s">&quot;dynamic&quot;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s">&quot;category&quot;</span><span class="p">,</span>
-                                   <span class="n">cascade</span><span class="o">=</span><span class="s">&quot;all, delete-orphan&quot;</span><span class="p">)</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Text</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">layouts</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Layouts&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="s2">&quot;dynamic&quot;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">,</span>
+                                   <span class="n">cascade</span><span class="o">=</span><span class="s2">&quot;all, delete-orphan&quot;</span><span class="p">)</span>
 
     <span class="n">jntmodel</span><span class="o">.</span><span class="n">LayoutsCategories</span> <span class="o">=</span> <span class="n">LayoutsCategories</span>
 
-    <span class="c"># hack to get class pickable</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">__name__</span><span class="p">],</span> <span class="s">&#39;LayoutsCategories&#39;</span><span class="p">,</span> <span class="n">LayoutsCategories</span><span class="p">)</span>
+    <span class="c1"># hack to get class pickable</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="vm">__name__</span><span class="p">],</span> <span class="s1">&#39;LayoutsCategories&#39;</span><span class="p">,</span> <span class="n">LayoutsCategories</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Layouts</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">CRUDMixin</span><span class="p">):</span>
-        <span class="n">__tablename__</span> <span class="o">=</span> <span class="s">&quot;core_layouts&quot;</span>
+        <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;core_layouts&quot;</span>
 
-        <span class="n">key</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">PickleType</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="n">layoutcategory</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
-                                  <span class="n">sa</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;core_layouts_categories.key&#39;</span><span class="p">,</span>
-                                                <span class="n">use_alter</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-                                                <span class="n">name</span><span class="o">=</span><span class="s">&quot;fk_layouts_categories&quot;</span><span class="p">),</span>
-                                  <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">PickleType</span><span class="p">)</span>
+        <span class="n">layoutcategory_key</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">sa</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;core_layouts_categories.key&#39;</span><span class="p">),</span>
+                                     <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-        <span class="c"># The name (displayed in the form)</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">layoutcategory</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;LayoutsCategories&#39;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="s2">&quot;joined&quot;</span><span class="p">,</span>
+                                        <span class="n">backref</span><span class="o">=</span><span class="s2">&quot;core_layouts_categories&quot;</span><span class="p">,</span> <span class="n">uselist</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                        <span class="n">foreign_keys</span><span class="o">=</span><span class="p">[</span><span class="n">layoutcategory_key</span><span class="p">])</span>
 
-        <span class="c"># The description (displayed in the form)</span>
-        <span class="n">description</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Text</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="c1"># The name (displayed in the form)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-        <span class="nd">@classmethod</span>
-        <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="c1"># The description (displayed in the form)</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">Text</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
         <span class="nd">@classmethod</span>
-        <span class="k">def</span> <span class="nf">get_layouts</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">from_group</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+        <span class="nd">@classmethod</span>
+        <span class="k">def</span> <span class="nf">get_layouts</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">from_group</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
             <span class="sd">&quot;&quot;&quot;This will return all layouts with the key as the key for the dict</span>
 <span class="sd">            and the values are packed again in a dict which contains</span>
 <span class="sd">            the remaining attributes.</span>
 
 <span class="sd">            :param from_group: Optionally - Returns only the layouts from a group.</span>
 <span class="sd">            &quot;&quot;&quot;</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
-            <span class="k">if</span> <span class="n">from_group</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">from_group</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">result</span> <span class="o">=</span> <span class="n">from_group</span><span class="o">.</span><span class="n">layouts</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">result</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
             <span class="n">layouts</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="k">for</span> <span class="n">layout</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
                 <span class="n">layouts</span><span class="p">[</span><span class="n">layout</span><span class="o">.</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-                    <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">layout</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                    <span class="s">&#39;description&#39;</span><span class="p">:</span> <span class="n">layout</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+                    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">layout</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">layout</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
                 <span class="p">}</span>
             <span class="k">return</span> <span class="n">layouts</span>
 
         <span class="nd">@classmethod</span>
-        <span class="k">def</span> <span class="nf">as_dict</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">from_group</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">as_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">from_group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
             <span class="sd">&quot;&quot;&quot;Returns all layouts as a dict. This method is cached. If you want</span>
 <span class="sd">            to invalidate the cache, simply execute ``self.invalidate_cache()``.</span>
 
@@ -215,8 +215,8 @@
 <span class="sd">            &quot;&quot;&quot;</span>
 
             <span class="n">layouts</span> <span class="o">=</span> <span class="p">{}</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
-            <span class="k">if</span> <span class="n">from_group</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">from_group</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">result</span> <span class="o">=</span> <span class="n">LayoutsCategories</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">from_group</span><span class="p">)</span><span class="o">.</span>\
                     <span class="n">first</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
@@ -224,9 +224,9 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="c">#~ print(Setting.query)</span>
-                <span class="n">result</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-            <span class="c">#~ print result</span>
+                <span class="c1">#~ print(Setting.query)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+            <span class="c1">#~ print result</span>
             <span class="k">for</span> <span class="n">layout</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">upper</span><span class="p">:</span>
                     <span class="n">layout_key</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
@@ -238,8 +238,8 @@
 
     <span class="n">jntmodel</span><span class="o">.</span><span class="n">Layouts</span> <span class="o">=</span> <span class="n">Layouts</span>
 
-    <span class="c"># hack to get class pickable</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">__name__</span><span class="p">],</span> <span class="s">&#39;Layouts&#39;</span><span class="p">,</span> <span class="n">Layouts</span><span class="p">)</span></div>
+    <span class="c1"># hack to get class pickable</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="vm">__name__</span><span class="p">],</span> <span class="s1">&#39;Layouts&#39;</span><span class="p">,</span> <span class="n">Layouts</span><span class="p">)</span></div>
 </pre></div>
 
     </div>
@@ -254,7 +254,7 @@
     </p>
     <p>
         &copy; Copyright 2014,2015,2016 Sébastien GALLET aka bibi2100 &lt;bibi21000@gmail.com&gt;.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.<br/>
     </p>
   </div>
 </footer>
